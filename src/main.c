@@ -7,14 +7,17 @@
 
 int main(int argc, char *argv[])
 {
-	char *nread;
+	char *line;
+	char **args;
 
 	while(1)
 	{
 		prompt();
-		nread = read_line();
-		
-		
+		line = read_line();
+		if (line == NULL)
+			break;
+		**args = **parse_line(line);
 	}
+	free (line);
 	return (0);
 }

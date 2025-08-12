@@ -14,6 +14,12 @@ char *read_line(void)
 	nread = getline(&line, &len, stdin);
 	if (nread == -1) 
 	{
+		if (feof(stdin))
+		{
+			free(line);
+			return (NULL);
+		}
+		free(line);
 		print_error("Get line error");
 		return (NULL);
 	}
