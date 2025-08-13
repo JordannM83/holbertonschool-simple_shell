@@ -5,7 +5,7 @@
  * This function initializes the shell and enters the main loop.
  */
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	char *line;
 	char **args;
@@ -14,10 +14,13 @@ int main(int argc, char *argv[])
 	{
 		prompt();
 		line = read_line();
+
 		if (line == NULL)
 			break;
-		**args = **parse_line(line);
+		args = parse_line(line);
+
+		execute(args);
+		free (line);
 	}
-	free (line);
 	return (0);
 }
