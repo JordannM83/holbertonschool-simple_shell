@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 			prompt();
 		line = read_line();
 
-		if (line == NULL)
+		if (line[0] == '\0')
 			continue;
 		args = parse_line(line);
 
