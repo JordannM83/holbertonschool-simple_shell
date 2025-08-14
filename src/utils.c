@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * Read a line of input from the user.
- * This function reads a line of text from standard input.
+ * read_line - Reads a line of input from the user.
+ * Return: A pointer to the input string or NULL on failure.
  */
 
 char *read_line(void)
@@ -12,7 +12,7 @@ char *read_line(void)
 	ssize_t nread;
 
 	nread = getline(&line, &len, stdin);
-	if (nread == -1) 
+	if (nread == -1)
 	{
 		if (feof(stdin))
 		{

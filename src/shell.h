@@ -17,4 +17,6 @@ void print_env(void);
 void shell_exit(void);
 void print_error(const char *msg);
 
+extern char **environ;
+
 #endif /* SHELL_H */

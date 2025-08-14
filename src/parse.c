@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
- * Parse a command line input.
- * This function splits the input line into individual arguments.
+ * parse_line - Splits a line into words.
+ * @line: The input line to split.
+ * Return: An array of words (strings) or NULL on failure.
  */
 
 char **parse_line(char *line)
@@ -24,13 +25,14 @@ char **parse_line(char *line)
 	while (token)
 	{
 		char **tmp = realloc(words, sizeof(char *) * (count + 2));
+
 		if (!tmp)
 		{
 			free(copy);
 			for (i = 0; i < count; i++)
 				free(words[i]);
 			free(words);
-			return NULL;
+			return (NULL);
 		}
 		words = tmp;
 		words[count] = strdup(token);

@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * Print an error message to stderr.
- * This function displays an error message to the standard error output.
+ * print_error - prints an error message to stderr
+ * @msg: the error message to print
  */
 
 void print_error(const char *msg)
