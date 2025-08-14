@@ -14,7 +14,7 @@ char *read_line(void);
 char **parse_line(char *line);
 int execute(char **args);
 void print_env(void);
-void shell_exit(char line);
+void *shell_exit(char *line, ssize_t nread);
 void print_error(const char *msg);
 
 extern char **environ;
