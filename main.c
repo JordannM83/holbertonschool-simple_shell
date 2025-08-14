@@ -26,8 +26,15 @@ int main(int argc, char **argv)
 			continue;
 		}
 		args = parse_line(line);
-
-		execute(args, argv[0]);
+		if (args && args[0])
+		{
+			if (strcmp(args[0], "env") == 0)
+				print_env();
+			else
+				execute(args, argv[0]);
+		}
+		
+		free(args);
 		free(line);
 		free(args);
 	}

@@ -1,0 +1,124 @@
+.TH SIMPLE_SHELL 1 "August 2025" "Version 1.0" "Simple Shell Manual"
+
+.SH NAME
+simple_shell \- simple UNIX command line interpreter
+
+.SH SYNOPSIS
+.B hsh
+.br
+.B echo "command" | hsh
+
+.SH DESCRIPTION
+.B Simple Shell
+is a basic UNIX command line interpreter that executes commands read from standard input. It implements a subset of the functionality of 
+.BR sh (1).
+
+.B Simple Shell
+can operate in both interactive and non-interactive modes. In interactive mode, it displays a prompt and waits for user input. In non-interactive mode, it reads commands from standard input.
+
+.SH USAGE
+After compilation, the shell can be invoked by:
+.br
+.B ./hsh
+
+.SH FEATURES
+.TP
+.B Interactive Mode
+Displays a prompt (#cisfun$) and waits for user commands
+.TP
+.B Non-interactive Mode  
+Reads commands from standard input (pipes, redirections)
+.TP
+.B PATH Support
+Automatically searches for executables in PATH environment variable
+.TP
+.B Built-in Commands
+Supports exit and env built-in commands
+.TP
+.B Error Handling
+Displays appropriate error messages for invalid commands
+
+.SH BUILT-IN COMMANDS
+.TP
+.B exit
+Exit the shell
+.TP
+.B env
+Print the current environment variables
+
+.SH EXAMPLES
+.TP
+Interactive mode:
+.nf
+$ ./hsh
+#cisfun$ ls
+file1 file2 file3
+#cisfun$ /bin/pwd
+/home/user
+#cisfun$ exit
+$
+.fi
+
+.TP
+Non-interactive mode:
+.nf
+$ echo "ls" | ./hsh
+file1 file2 file3
+$ echo "/bin/pwd" | ./hsh
+/home/user
+.fi
+
+.SH RETURN VALUE
+.B Simple Shell
+returns the exit status of the last command executed. If a command is not found, it returns 127. For built-in commands, it returns 0 on success.
+
+.SH ENVIRONMENT
+.TP
+.B PATH
+Used to search for executable files
+
+.SH FILES
+.TP
+.B hsh
+The executable shell program
+
+.SH ERRORS
+When an error occurs, 
+.B simple_shell
+prints an error message to standard error with the format:
+.br
+./hsh: line_number: command: not found
+
+.SH LIMITATIONS
+.B Simple Shell
+does not support:
+.br
+- Pipes (|)
+.br  
+- Redirections (>, <, >>)
+.br
+- Background processes (&)
+.br
+- Variable expansions ($VAR)
+.br
+- Quotes for arguments with spaces
+.br
+- Command substitution
+.br
+- Wildcards (* ?)
+
+.SH AUTHORS
+See AUTHORS file for list of contributors.
+
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR execve (2),
+.BR fork (2),
+.BR wait (2)
+
+.SH BUGS
+No known bugs. Report bugs to the project repository.
+
+.SH COPYRIGHT
+This is free software developed for educational purposes as part of Holberton School curriculum.
