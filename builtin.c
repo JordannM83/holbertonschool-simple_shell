@@ -12,6 +12,7 @@ void shell_exit(char *line, ssize_t nread)
 	{
 		if (feof(stdin))
 		{
+			printf("\n");
 			free(line);
 			exit(0);
 		}
