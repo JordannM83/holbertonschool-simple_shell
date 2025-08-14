@@ -26,8 +26,8 @@ int execute_command(char *path, char **args, char *prog_name)
 	if (pid == 0)
 	{
 		execve(path, args, environ);
-		fprintf(stderr, "%s: %d: %s: not found\n", prog_name,
-			command_count, args[0]);
+		fprintf(stderr, "%s: %d: %s: not found\n",
+	  prog_name, command_count, args[0]);
 		exit(127);
 	}
 
@@ -48,11 +48,11 @@ int find_command(char **args, char *prog_name)
 	char *path, *path_copy, *token, *full_path;
 	int result;
 
-	path = getenv("PATH");
+	path = my_getenv("PATH");
 	if (!path)
 		return (127);
 
-	path_copy = strdup(path);
+	path_copy = my_strdup(path);
 	if (!path_copy)
 		return (127);
 

@@ -20,15 +20,11 @@ int main(int argc, char **argv)
 			prompt();
 		line = read_line();
 
-		if (line == NULL)
-			continue;
-			
 		if (line[0] == '\0')
 		{
 			free(line);
 			continue;
 		}
-		
 		args = parse_line(line);
 		if (args && args[0])
 		{
@@ -40,6 +36,7 @@ int main(int argc, char **argv)
 		
 		free(args);
 		free(line);
+		free(args);
 	}
 	return (0);
 }
