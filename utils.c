@@ -60,9 +60,10 @@ char *my_getenv(const char *name)
  * @new_size: Size of new memory block
  * Return: Pointer to reallocated memory or NULL on failure
  */
-char **my_realloc(char **ptr, size_t old_size, size_t new_size)
+void *my_realloc(void *ptr, size_t old_size, size_t new_size)
 {
-	char **new_ptr;
+	void *new_ptr;
+	char *old_char_ptr, *new_char_ptr;
 	size_t i;
 
 	if (new_size == 0)
@@ -78,8 +79,11 @@ char **my_realloc(char **ptr, size_t old_size, size_t new_size)
 	if (!new_ptr)
 		return (NULL);
 
+	old_char_ptr = (char *)ptr;
+	new_char_ptr = (char *)new_ptr;
+
 	for (i = 0; i < old_size && i < new_size; i++)
-		new_ptr[i] = ptr[i];
+		new_char_ptr[i] = old_char_ptr[i];
 
 	free(ptr);
 	return (new_ptr);

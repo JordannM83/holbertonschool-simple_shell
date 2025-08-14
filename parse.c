@@ -22,7 +22,7 @@ char **parse_line(char *line)
 		if (i == bufsize)
 		{
 			bufsize *= 2;
-			tokens = my_realloc(tokens, (bufsize / 2) * sizeof(char *),
+			tokens = (char **)my_realloc(tokens, (bufsize / 2) * sizeof(char *),
 			bufsize * sizeof(char *));
 			if (!tokens)
 				return (NULL);

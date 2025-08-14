@@ -21,11 +21,15 @@ int main(int argc, char **argv)
 		line = read_line();
 
 		if (line[0] == '\0')
+		{
+			free(line);
 			continue;
+		}
 		args = parse_line(line);
 
 		execute(args, argv[0]);
 		free(line);
+		free(args);
 	}
 	return (0);
 }

@@ -24,7 +24,7 @@ void shell_exit(char *line, ssize_t nread);
 void print_error(const char *msg);
 char *my_strdup(const char *s);
 char *my_getenv(const char *name);
-char **my_realloc(char **ptr, size_t old_size, size_t new_size);
+void *my_realloc(void *ptr, size_t old_size, size_t new_size);
 
 extern char **environ;
 
