@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 		line = read_line();
 
 		if (line == NULL)
-			break;
+			continue;
 		args = parse_line(line);
 
 		execute(args, argv[0]);
