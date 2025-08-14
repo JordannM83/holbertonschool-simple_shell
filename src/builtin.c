@@ -18,4 +18,12 @@ void shell_exit(char *line, ssize_t nread)
 		print_error("Get line error");
 		exit(1);
 	}
+
+	line[strcspn(line, "\n")] = '\0';
+	if (strcmp(line, "exit") == 0)
+	{
+		printf("exit\n");
+		free(line);
+		exit(0);
+	}
 }
