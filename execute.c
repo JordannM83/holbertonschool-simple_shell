@@ -26,7 +26,8 @@ int execute_command(char *path, char **args, char *prog_name)
 	if (pid == 0)
 	{
 		execve(path, args, environ);
-		fprintf(stderr, "%s: %d: %s: not found\n", prog_name, command_count, args[0]);
+		fprintf(stderr, "%s: %d: %s: not found\n", prog_name,
+			command_count, args[0]);
 		exit(127);
 	}
 
@@ -104,7 +105,8 @@ int execute(char **args, char *prog_name)
 	result = find_command(args, prog_name);
 	if (result == 127)
 	{
-		fprintf(stderr, "%s: %d: %s: not found\n", prog_name, command_count, args[0]);
+		fprintf(stderr, "%s: %d: %s: not found\n",
+			prog_name, command_count, args[0]);
 		command_count++;
 	}
 
