@@ -11,7 +11,6 @@
 int execute(char **args)
 {
 	pid_t pid;
-	int i;
 
 	if (args && args[0])
 	{
@@ -32,8 +31,6 @@ int execute(char **args)
 			print_error("fork");
 			return (-1);
 		}
-		for (i = 0; args[i]; i++)
-			free(args[i]);
 		free(args);
 	}
 	return (0);
