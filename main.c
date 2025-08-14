@@ -13,7 +13,7 @@ int main(void)
 
 	while (1)
 	{
-		if(isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO))
 			prompt();
 		line = read_line();
 
