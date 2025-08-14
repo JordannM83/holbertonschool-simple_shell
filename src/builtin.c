@@ -5,7 +5,7 @@
  * This function terminates the shell process.
  */
 
-void shell_exit(void)
+void shell_exit(char line)
 {
 
 }

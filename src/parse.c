@@ -1,46 +1,32 @@
 #include "shell.h"
 
 /**
- * parse_line - Splits a line into words.
+ * parse_line - Splits a line into words (tokens).
  * @line: The input line to split.
- * Return: An array of words (strings) or NULL on failure.
+ * Return: An array of words (strings), NULL-terminated.
+ * Must be freed by caller.
  */
 
 char **parse_line(char *line)
 {
+	size_t i = 0, bufsize = 32;
+	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
-	char **words = NULL;
-	int count = 0;
-	char *copy;
-	int i;
 
-	if (!line)
+	if (!tokens || !line)
 		return (NULL);
 
-	copy = strdup(line);
-	if (!copy)
-		return (NULL);
-
-	token = strtok(copy, " \t\n");
-	while (token)
+	for (token = strtok(line, " \t\r\n"); token; token = strtok(NULL, " \t\r\n"))
 	{
-		char **tmp = realloc(words, sizeof(char *) * (count + 2));
-
-		if (!tmp)
+		tokens[i++] = token;
+		if (i == bufsize)
 		{
-			free(copy);
-			for (i = 0; i < count; i++)
-				free(words[i]);
-			free(words);
-			return (NULL);
+			bufsize *= 2;
+			tokens = realloc(tokens, bufsize * sizeof(char *));
+			if (!tokens)
+				return (NULL);
 		}
-		words = tmp;
-		words[count] = strdup(token);
-		count++;
-		token = strtok(NULL, " \t\n");
 	}
-	free(copy);
-	if (words)
-		words[count] = NULL;
-	return (words);
+	tokens[i] = NULL;
+	return (tokens);
 }
