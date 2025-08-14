@@ -16,9 +16,9 @@
 void prompt(void);
 char *read_line(void);
 char **parse_line(char *line);
-int execute(char **args);
-int execute_command(char *path, char **args);
-int find_command(char **args);
+int execute(char **args, char *prog_name);
+int execute_command(char *path, char **args, char *prog_name);
+int find_command(char **args, char *prog_name);
 void print_env(void);
 void shell_exit(char *line, ssize_t nread);
 void print_error(const char *msg);
