@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
- * Exit the shell.
- * This function terminates the shell process.
+ * shell_exit - Exits the shell
+ * @line: The input line
+ * @nread: The number of bytes read
  */
 
 void shell_exit(char *line, ssize_t nread)
