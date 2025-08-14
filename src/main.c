@@ -1,16 +1,17 @@
+
 #include "shell.h"
 
 /**
- * Main function for the shell.
- * This function initializes the shell and enters the main loop.
+ * main - Entry point of the shell program
+ *
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
 	char *line;
 	char **args;
 
-	while(1)
+	while (1)
 	{
 		prompt();
 		line = read_line();
@@ -20,7 +21,7 @@ int main(void)
 		args = parse_line(line);
 
 		execute(args);
-		free (line);
+		free(line);
 	}
 	return (0);
 }

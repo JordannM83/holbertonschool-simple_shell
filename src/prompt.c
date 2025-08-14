@@ -1,8 +1,7 @@
 #include "shell.h"
 
 /**
- * Display the shell prompt.
- * This function prints the prompt symbol to the standard output.
+ * prompt - Displays the shell prompt.
  */
 
 void prompt(void)
