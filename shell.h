@@ -21,7 +21,6 @@ int execute_command(char *path, char **args, char *prog_name);
 int find_command(char **args, char *prog_name);
 void print_env(void);
 void shell_exit(char *line, ssize_t nread);
-void print_error(const char *msg);
 char *my_strdup(const char *s);
 char *my_getenv(const char *name);
 void *my_realloc(void *ptr, size_t old_size, size_t new_size);
