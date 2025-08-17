@@ -33,7 +33,6 @@ int main(int argc, char **argv)
 			else
 				execute(args, argv[0]);
 		}
-		
 		free(line);
 		free(args);
 	}
