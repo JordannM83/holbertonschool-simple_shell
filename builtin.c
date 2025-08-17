@@ -17,7 +17,7 @@ void shell_exit(char *line, ssize_t nread)
 			exit(0);
 		}
 		free(line);
-		print_error("Get line error");
+		perror("Get line error");
 		exit(1);
 	}
 
