@@ -28,14 +28,12 @@ int main(int argc, char **argv)
 		args = parse_line(line);
 		if (args && args[0])
 		{
-			if (strcmp(args[0], "env") == 0)
-				print_env();
-			else
-				execute(args, argv[0]);
+			execute(args, argv[0]);
 		}
-		
+
 		free(line);
-		free(args);
+		if (args)
+			free(args);
 	}
 	return (0);
 }
