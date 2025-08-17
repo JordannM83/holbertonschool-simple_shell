@@ -34,7 +34,6 @@ int main(int argc, char **argv)
 				execute(args, argv[0]);
 		}
 		
-		free(args);
 		free(line);
 		free(args);
 	}
