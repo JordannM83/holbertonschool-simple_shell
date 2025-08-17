@@ -19,7 +19,7 @@ int execute_command(char *path, char **args, char *prog_name)
 	pid = fork();
 	if (pid == -1)
 	{
-		print_error("fork");
+		perror("fork");
 		return (-1);
 	}
 
@@ -27,7 +27,7 @@ int execute_command(char *path, char **args, char *prog_name)
 	{
 		execve(path, args, environ);
 		fprintf(stderr, "%s: %d: %s: not found\n",
-	  prog_name, command_count, args[0]);
+		prog_name, command_count, args[0]);
 		exit(127);
 	}
 
