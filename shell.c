@@ -1,15 +1,6 @@
 #include "shell.h"
 
 /**
- * print_prompt - Print the shell prompt
- */
-void print_prompt(void)
-{
-	if (isatty(STDIN_FILENO))
-		printf("($) ");
-}
-
-/**
  * read_line - Read a line of input from stdin
  *
  * Return: The line read from stdin
@@ -102,19 +93,13 @@ int execute_command(char **args, char *prog_name)
 		return (1);
 	}
 
-	/* Handle exit command */
-	if (strcmp(args[0], "exit") == 0)
-	{
-		return (0);
-	}
-
 	pid = fork();
 	if (pid == 0)
 	{
 		/* Child process */
 		if (execve(args[0], args, environ) == -1)
 		{
-			fprintf(stderr, "%s: 1: %s: not found\n", prog_name, args[0]);
+			fprintf(stderr, "%s: No such file or directory\n", prog_name);
 		}
 		exit(127);
 	}
@@ -143,6 +128,9 @@ void shell_loop(char *prog_name)
 	char *line;
 	char **args;
 	int status;
+
+	/* Set up signal handler for Ctrl+C */
+	signal(SIGINT, handle_signal);
 
 	do {
 		print_prompt();
