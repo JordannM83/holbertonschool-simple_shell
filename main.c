@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 {
 	char *line;
 	char **args;
+	static int line_count = 1;
 
 	(void)argc;
 	while (1)
@@ -22,6 +23,7 @@ int main(int argc, char **argv)
 
 		if (line[0] == '\0')
 		{
+			line_count++;
 			free(line);
 			continue;
 		}
@@ -31,9 +33,10 @@ int main(int argc, char **argv)
 			if (strcmp(args[0], "env") == 0)
 				print_env();
 			else
-				execute(args, argv[0]);
+				execute(args, argv[0], line_count);
 		}
-		
+
+		line_count++;
 		free(line);
 		free(args);
 	}

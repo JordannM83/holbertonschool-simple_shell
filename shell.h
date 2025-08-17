@@ -16,9 +16,9 @@
 void prompt(void);
 char *read_line(void);
 char **parse_line(char *line);
-int execute(char **args, char *prog_name);
-int execute_command(char *path, char **args, char *prog_name);
-int find_command(char **args, char *prog_name);
+int execute(char **args, char *prog_name, int line_num);
+int execute_command(char *path, char **args, char *prog_name, int line_num);
+int find_command(char **args, char *prog_name, int line_num);
 void print_env(void);
 void shell_exit(char *line, ssize_t nread);
 char *my_strdup(const char *s);
