@@ -1,24 +1,15 @@
-
 #include "shell.h"
 
 /**
- * main - Entry point of the shell program
- * @argc: Number of arguments
- * @argv: Array of arguments
+ * main - Entry point for the simple shell
+ * @argc: Argument count
+ * @argv: Argument vector
  *
- * Return: Always 0 (Success)
+ * Return: 0 on success
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	char *line;
-	char **args;
-
 	(void)argc;
-	while (1)
-	{
-		if (isatty(STDIN_FILENO))
-			prompt();
-		line = read_line();
 
 		if (line[0] == '\0')
 		{

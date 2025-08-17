@@ -7,24 +7,19 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
-/* Constants */
-#define MAX_ARGUMENTS 64
-#define MAX_PATH_LENGTH 1024
+#include <sys/stat.h>
+#include <errno.h>
+#include <signal.h>
 
 /* Function prototypes */
-void prompt(void);
 char *read_line(void);
-char **parse_line(char *line);
-int execute(char **args, char *prog_name);
-int execute_command(char *path, char **args, char *prog_name);
-int find_command(char **args, char *prog_name);
-void print_env(void);
-void shell_exit(char *line, ssize_t nread);
-char *my_strdup(const char *s);
-char *my_getenv(const char *name);
-void *my_realloc(void *ptr, size_t old_size, size_t new_size);
+char **split_line(char *line);
+int execute_command(char **args, char *prog_name);
+void shell_loop(char *prog_name);
+void print_prompt(void);
+void handle_signal(int sig);
 
+/* Environment variable */
 extern char **environ;
 
 #endif /* SHELL_H */
