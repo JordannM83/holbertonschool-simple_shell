@@ -11,8 +11,21 @@ int main(int argc, char *argv[])
 {
 	(void)argc;
 
-	/* Run the shell loop with program name */
-	shell_loop(argv[0]);
-
+		if (line[0] == '\0')
+		{
+			free(line);
+			continue;
+		}
+		args = parse_line(line);
+		if (args && args[0])
+		{
+			if (strcmp(args[0], "env") == 0)
+				print_env();
+			else
+				execute(args, argv[0]);
+		}
+		free(line);
+		free(args);
+	}
 	return (0);
 }
