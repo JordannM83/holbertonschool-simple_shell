@@ -104,7 +104,7 @@ int execute(char **args, char *prog_name, int line_num)
 	result = find_command(args, prog_name, line_num);
 	if (result == 127)
 	{
-		fprintf(stderr, "%s: %d: %s: not found\n",
+		fprintf(stderr, "%s: %d: %s: Permission denied\n",
 			prog_name, line_num, args[0]);
 	}
 
