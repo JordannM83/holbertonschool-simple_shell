@@ -21,10 +21,11 @@ int main(int argc, char **argv)
 			prompt();
 		line = read_line();
 
-		if (line[0] == '\0')
+		if (!line || line[0] == '\0')
 		{
 			line_count++;
-			free(line);
+			if (line)
+				free(line);
 			continue;
 		}
 		args = parse_line(line);
