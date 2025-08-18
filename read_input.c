@@ -22,5 +22,6 @@ char *read_command(void)
 	if (line[nread - 1] == '\n')
 		line[nread - 1] = '\0';
 
+	shell_exit(line, nread);
 	return (line);
 }

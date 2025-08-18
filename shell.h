@@ -15,6 +15,7 @@ void prompt(void);
 char *read_command(void);
 int execute_command(char *command, char *program_name, int line_count);
 void print_error(char *program_name, char *command, int line_count);
+void shell_exit(char *line, ssize_t nread);
 
 /* External variable */
 extern char **environ;
