@@ -2,15 +2,18 @@
 
 /**
  * main - Entry point for the shell program
+ * @argc: Number of arguments
+ * @argv: Array of argument strings
  * Return: Always 0 (Success)
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
 	char *line;
 	static int line_count = 1;
 	int i = 0;
 	int len;
+	(void)argc;
 
 	while (1)
 	{
@@ -23,7 +26,6 @@ int main(void)
 			break;
 		}
 		i = 0;
-
 		while (line[i] == ' ' || line[i] == '\t')
 			i++;
 		if (line[i] == '\0')
