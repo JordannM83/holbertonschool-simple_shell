@@ -15,6 +15,8 @@ void prompt(void);
 char *read_command(void);
 int execute_command(char *command, char *program_name, int line_count);
 void print_error(char *program_name, char *command, int line_count, char *msg);
+char **parse_line(char *line);
+void *my_realloc(void *ptr, size_t old_size, size_t new_size);
 
 /* External variable */
 extern char **environ;
