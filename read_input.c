@@ -8,6 +8,7 @@
 char *read_command(void)
 {
 	char *line = NULL;
+	char *space_pos;
 	size_t size = 0;
 	ssize_t nread;
 
@@ -21,6 +22,11 @@ char *read_command(void)
 
 	if (nread > 0 && line[nread - 1] == '\n')
 		line[nread - 1] = '\0';
+
+	/* Remove arguments - keep only first word */
+	space_pos = strchr(line, ' ');
+	if (space_pos)
+		*space_pos = '\0';
 
 	return (line);
 }

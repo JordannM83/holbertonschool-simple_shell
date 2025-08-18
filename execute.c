@@ -31,7 +31,7 @@ int execute_command(char *command, char *program_name, int line_count)
 	if (pid == 0)
 	{
 		execve(command, args, environ);
-		print_error(program_name, command, line_count, "No such file or directory");
+		print_error(program_name, command, line_count, "not found");
 		exit(127);
 	}
 
