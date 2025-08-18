@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	static int line_count = 1;
 	int i = 0;
 	int len;
+	int exit_status = 0;
 	(void)argc;
 
 	while (1)
@@ -40,9 +41,9 @@ int main(int argc, char **argv)
 			len--;
 		}
 
-		execute_command(line + i, argv[0], line_count);
+		exit_status = execute_command(line + i, argv[0], line_count);
 		line_count++;
 		free(line);
 	}
-	return (0);
+	return (exit_status);
 }
