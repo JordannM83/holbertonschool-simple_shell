@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 		if (line[i] == '\0')
 		{
 			free(line);
+			line_count++;
 			continue;
 		}
 		len = strlen(line);
