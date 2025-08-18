@@ -18,10 +18,6 @@ int execute_command(char *command, char *program_name, int line_count)
 	if (!command)
 		return (-1);
 
-	if (access(command, X_OK) == - 1)
-		print_error(program_name, command, line_count, "permission denied");
-		exit (126);
-
 	args[0] = command;
 	args[1] = NULL;
 
