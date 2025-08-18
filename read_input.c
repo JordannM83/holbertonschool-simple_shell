@@ -8,7 +8,6 @@
 char *read_command(void)
 {
 	char *line = NULL;
-	char *space_pos;
 	size_t size = 0;
 	ssize_t nread;
 	int i;
@@ -36,6 +35,5 @@ char *read_command(void)
 		}
 		*space_pos = '\0';
 	}
-
 	return (line);
 }
