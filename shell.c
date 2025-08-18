@@ -11,6 +11,8 @@ int main(int argc, char **argv)
 {
 	char *line;
 	static int line_count = 1;
+	int i = 0;
+	int len;
 	(void)argc;
 	(void)argv;
 
@@ -18,16 +20,26 @@ int main(int argc, char **argv)
 	{
 		prompt();
 		line = read_command();
-		if (!line || line[0] == '\0')
+		if (!line)
+			break;
+
+		i = 0;
+
+		while (line[i] == ' ' || line[i] == '\t')
+			i++;
+		if (line[i] == '\0')
 		{
-			if (line)
-				free(line);
-			if (!line)
-				break;
+			free(line);
 			continue;
 		}
 
-		execute_command(line);
+		len = strlen(line);
+		while (len > i && (line[len - 1] == ' ' || line[len - 1] == '\t'))
+		{
+			line[len - 1] = '\0';
+			len--;
+		}
+		execute_command(line + i, argv[0], line_count);
 		line_count++;
 		free(line);
 	}

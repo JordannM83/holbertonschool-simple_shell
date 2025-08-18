@@ -13,9 +13,8 @@
 /* function prototypes here */
 void prompt(void);
 char *read_command(void);
-char *trim_whitespace(char *str);
-int execute_command(char *command);
-void print_error(char *program_name, char *command);
+int execute_command(char *command, char *program_name, int line_count);
+void print_error(char *program_name, char *command, int line_count);
 
 /* External variable */
 extern char **environ;

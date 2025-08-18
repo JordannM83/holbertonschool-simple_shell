@@ -3,11 +3,13 @@
 /**
  * execute_command - Execute a command
  * @command: Command to execute
+ * @program_name: Name of the shell program
+ * @line_count: Current line count
  *
  * Return: Exit status of the command, -1 on error
  */
 
-int execute_command(char *command)
+int execute_command(char *command, char *program_name, int line_count)
 {
 	pid_t pid;
 	int status;
@@ -29,7 +31,7 @@ int execute_command(char *command)
 	if (pid == 0)
 	{
 		execve(command, args, environ);
-		perror("execve");
+		print_error(program_name, command, line_count);
 		exit(127);
 	}
 
