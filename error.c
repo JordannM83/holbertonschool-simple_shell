@@ -7,8 +7,8 @@
  * @line_count: Line number where error occurred
  */
 
-void print_error(char *program_name, char *command, int line_count)
+void print_error(char *program_name, char *command, int line_count, char msg)
 {
-	fprintf(stderr, "%s: %d: %s: not found\n",
-		program_name, line_count, command);
+	fprintf(stderr, "%s: %d: %s: %s\n",
+		program_name, line_count, command, msg);
 }
