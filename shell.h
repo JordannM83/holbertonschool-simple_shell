@@ -13,10 +13,16 @@
 /* function prototypes here */
 void prompt(void);
 char *read_command(void);
-int execute_command(char *command, char *program_name, int line_count);
+int execute(char **args, char *prog_name, int line_num);
+int execute_command(char *path, char **args, char *prog_name, int line_num);
+int find_command(char **args, char *prog_name, int line_num);
 void print_error(char *program_name, char *command, int line_count, char *msg);
 char **parse_line(char *line);
 void *my_realloc(void *ptr, size_t old_size, size_t new_size);
+char *my_getenv(const char *name);
+char *my_strdup(const char *str);
+int trim_line(char *line, int *start);
+int process_command(char *line, char *prog_name, int line_count);
 
 /* External variable */
 extern char **environ;
