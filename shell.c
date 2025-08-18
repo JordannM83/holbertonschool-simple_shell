@@ -22,7 +22,8 @@ int main(int argc, char **argv)
 		line = read_command();
 		if (!line)
 		{
-			printf("\n");
+			if (isatty(STDIN_FILENO))
+				printf("\n");
 			break;
 		}
 
@@ -42,6 +43,14 @@ int main(int argc, char **argv)
 			line[len - 1] = '\0';
 			len--;
 		}
+		
+		/* Handle built-in commands */
+		if (strcmp(line + i, "exit") == 0)
+		{
+			free(line);
+			break;
+		}
+		
 		execute_command(line + i, argv[0], line_count);
 		line_count++;
 		free(line);
