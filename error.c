@@ -5,6 +5,7 @@
  * @program_name: Name of the shell program
  * @command: Command that failed
  * @line_count: Line number where error occurred
+ * @msg: error message
  */
 
 void print_error(char *program_name, char *command, int line_count, char *msg)
