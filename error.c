@@ -9,6 +9,6 @@
 
 void print_error(char *program_name, char *command, int line_count)
 {
-	fprintf(stderr, "%s: %d: %s: No such file or directory\n",
+	fprintf(stderr, "%s: %d: %s: not found\n",
 		program_name, line_count, command);
 }

@@ -21,7 +21,10 @@ int main(int argc, char **argv)
 		prompt();
 		line = read_command();
 		if (!line)
+		{
+			printf("\n");
 			break;
+		}
 
 		i = 0;
 
