@@ -30,7 +30,6 @@ int execute_command(char *command, char *program_name, int line_count)
 		perror("fork");
 		return (-1);
 	}
-
 	if (pid == 0)
 	{
 		/* If command contains '/', try to execute it as is */
@@ -50,7 +49,6 @@ int execute_command(char *command, char *program_name, int line_count)
 		print_error(program_name, command, line_count, "not found");
 		exit(127);
 	}
-
 	wait(&status);
 	return (WEXITSTATUS(status));
 }
