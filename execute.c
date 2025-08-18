@@ -14,9 +14,6 @@ int execute_command(char *command, char *program_name, int line_count)
 	pid_t pid;
 	int status;
 	char *args[2];
-	char *paths[] = {"/bin/", "/usr/bin/", NULL};
-	char full_path[1024];
-	int i;
 
 	if (!command)
 		return (-1);
@@ -30,25 +27,14 @@ int execute_command(char *command, char *program_name, int line_count)
 		perror("fork");
 		return (-1);
 	}
+
 	if (pid == 0)
 	{
-		/* If command contains '/', try to execute it as is */
-		if (strchr(command, '/'))
-		{
-			execve(command, args, environ);
-		}
-		else
-		{
-			/* Try to find command in standard paths */
-			for (i = 0; paths[i]; i++)
-			{
-				snprintf(full_path, sizeof(full_path), "%s%s", paths[i], command);
-				execve(full_path, args, environ);
-			}
-		}
-		print_error(program_name, command, line_count, "not found");
+		execve(command, args, environ);
+		print_error(program_name, command, line_count, "No such file or directory");
 		exit(127);
 	}
+
 	wait(&status);
 	return (WEXITSTATUS(status));
 }
