@@ -24,21 +24,16 @@ char *read_command(void)
 	if (nread > 0 && line[nread - 1] == '\n')
 		line[nread - 1] = '\0';
 
-	/* Check if there are arguments (spaces followed by non-space characters) */
 	space_pos = strchr(line, ' ');
 	if (space_pos)
 	{
-		/* Skip spaces after the command */
 		i = space_pos - line + 1;
 		while (line[i] == ' ' || line[i] == '\t')
 			i++;
-		/* If there's non-space content after spaces, there are arguments */
 		if (line[i] != '\0')
 		{
-			/* Return the full line with arguments to trigger an error */
 			return (line);
 		}
-		/* If only trailing spaces, remove them */
 		*space_pos = '\0';
 	}
 
