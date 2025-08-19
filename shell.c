@@ -76,11 +76,14 @@ int main(int argc, char **argv)
 			break;
 		}
 		line[strcspn(line, "\n")] = '\0';
-		if (strcmp(line, "exit") == 0)
+
+		if (strncmp(line, "exit", 4) == 0 &&
+			(line[4] == '\0' || line[4] == ' ' || line[4] == '\t'))
 		{
 			free(line);
 			exit(0);
 		}
+
 		exit_status = process_command(line, argv[0], line_count);
 		line_count++;
 		free(line);
