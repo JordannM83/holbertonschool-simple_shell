@@ -48,17 +48,17 @@ Le shell fonctionne en mode interactif et non-interactif, permettant l'exécutio
 ## Compilation
 
 ```bash
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 src/*.c -o hsh
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
 ## Return Value
 
 Le shell retourne :
 - **0** : Exécution réussie ou commande `exit` sans argument
-- **Code d'erreur** : Code de sortie de la dernière commande exécutée
+- **Code d'erreur** : Code de sortie de la dernière commande exécutée (transmis lors de l'exit)
 - **127** : Commande non trouvée
 - **126** : Commande trouvée mais non exécutable
-- **2** : Mauvaise utilisation de commande intégrée
+- **2** : Mauvaise utilisation de commande intégrée ou erreur système
 
 ## Examples
 
@@ -85,12 +85,12 @@ $
 
 ```bash
 $ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
+hsh shell.c execute.c parse.c
 $ echo "ls -l" | ./hsh
 total 28
 -rwxrwxr-x 1 vagrant vagrant 8984 Dec  7 13:28 hsh
--rw-rw-r-- 1 vagrant vagrant 1365 Dec  7 13:28 main.c
--rw-rw-r-- 1 vagrant vagrant 1095 Dec  7 13:28 shell.c
+-rw-rw-r-- 1 vagrant vagrant 1365 Dec  7 13:28 shell.c
+-rw-rw-r-- 1 vagrant vagrant 1095 Dec  7 13:28 execute.c
 $
 ```
 

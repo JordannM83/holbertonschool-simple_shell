@@ -24,7 +24,7 @@ After compilation, the shell can be invoked by:
 .SH FEATURES
 .TP
 .B Interactive Mode
-Displays a prompt (#cisfun$) and waits for user commands
+Displays a prompt ($) and waits for user commands
 .TP
 .B Non-interactive Mode  
 Reads commands from standard input (pipes, redirections)
@@ -51,11 +51,11 @@ Print the current environment variables
 Interactive mode:
 .nf
 $ ./hsh
-#cisfun$ ls
+$ ls
 file1 file2 file3
-#cisfun$ /bin/pwd
+$ /bin/pwd
 /home/user
-#cisfun$ exit
+$ exit
 $
 .fi
 
@@ -70,7 +70,7 @@ $ echo "/bin/pwd" | ./hsh
 
 .SH RETURN VALUE
 .B Simple Shell
-returns the exit status of the last command executed. If a command is not found, it returns 127. For built-in commands, it returns 0 on success.
+returns the exit status of the last command executed. When the 'exit' command is used, it returns the exit status of the previously executed command. If a command is not found, it returns 127. For built-in commands, it returns 0 on success.
 
 .SH ENVIRONMENT
 .TP
@@ -108,7 +108,9 @@ does not support:
 - Wildcards (* ?)
 
 .SH AUTHORS
-See AUTHORS file for list of contributors.
+Jordann Miso <11457@holbertonstudents.com>
+.br
+Nicolai Carabet <11460@holbertonstudents.com>
 
 .SH SEE ALSO
 .BR sh (1),
