@@ -75,7 +75,12 @@ int main(int argc, char **argv)
 				printf("\n");
 			break;
 		}
-
+		line[strcspn(line, "\n")] = '\0';
+		if (strcmp(line, "exit") == 0)
+		{
+			free(line);
+			exit(0);
+		}
 		exit_status = process_command(line, argv[0], line_count);
 		line_count++;
 		free(line);
