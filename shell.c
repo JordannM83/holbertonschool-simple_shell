@@ -77,11 +77,18 @@ int main(int argc, char **argv)
 		}
 		line[strcspn(line, "\n")] = '\0';
 
-		if (strncmp(line, "exit", 4) == 0 &&
-			(line[4] == '\0' || line[4] == ' ' || line[4] == '\t'))
 		{
-			free(line);
-			exit(0);
+			char *trimmed = line;
+
+			while (*trimmed == ' ' || *trimmed == '\t')
+				trimmed++;
+
+			if (strncmp(trimmed, "exit", 4) == 0 &&
+				(trimmed[4] == '\0' || trimmed[4] == ' ' || trimmed[4] == '\t'))
+			{
+				free(line);
+				exit(0);
+			}
 		}
 
 		exit_status = process_command(line, argv[0], line_count);
