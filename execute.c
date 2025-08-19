@@ -95,16 +95,19 @@ int execute(char **args, char *prog_name, int line_num)
 
 	if (!args || !args[0])
 		return (-1);
-
-	if (access(args[0], F_OK) == 0)
+	if (strchr(args[0], '/') != NULL)
+	{
+		if (access(args[0], F_OK) == 0)
 		return (execute_command(args[0], args, prog_name, line_num));
 
-	result = find_command(args, prog_name, line_num);
-	if (result == 127)
-	{
-		fprintf(stderr, "%s: %d: %s: not found\n",
-			prog_name, line_num, args[0]);
+		result = find_command(args, prog_name, line_num);
+		if (result == 127)
+		{
+			fprintf(stderr, "%s: %d: %s: not found\n",
+				prog_name, line_num, args[0]);
+		}
 	}
+
 
 	return (result);
 }
