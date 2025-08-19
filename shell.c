@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 				(trimmed[4] == '\0' || trimmed[4] == ' ' || trimmed[4] == '\t'))
 			{
 				free(line);
-				exit(0);
+				exit(exit_status);
 			}
 		}
 
