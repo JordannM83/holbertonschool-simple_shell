@@ -17,6 +17,7 @@ int execute(char **args, char *prog_name, int line_num);
 int execute_command(char *path, char **args, char *prog_name, int line_num);
 int find_command(char **args, char *prog_name, int line_num);
 void print_error(char *program_name, char *command, int line_count, char *msg);
+void print_env(void);
 char **parse_line(char *line);
 void *my_realloc(void *ptr, size_t old_size, size_t new_size);
 char *my_getenv(const char *name);

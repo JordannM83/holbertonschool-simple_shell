@@ -98,6 +98,12 @@ int execute(char **args, char *prog_name, int line_num)
 	if (!args || !args[0])
 		return (-1);
 
+	if (strcmp(args[0], "env") == 0)
+	{
+		print_env();
+		return (0);
+	}
+
 	if (strchr(args[0], '/') != NULL && access(args[0], F_OK) == 0)
 		return (execute_command(args[0], args, prog_name, line_num));
 

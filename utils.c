@@ -56,3 +56,20 @@ char *my_strdup(const char *str)
 
 	return (dup);
 }
+
+/**
+ * print_env - Print all environment variables
+ */
+void print_env(void)
+{
+	int i = 0;
+
+	if (!environ)
+		return;
+
+	while (environ[i])
+	{
+		printf("%s\n", environ[i]);
+		i++;
+	}
+}
