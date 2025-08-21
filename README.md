@@ -1,7 +1,5 @@
 # Simple Shell
 
-![Simple Shell Architecture](./IMG/Flowchart.png)
-
 ## Description
 
 Simple Shell est un interpréteur de commandes Unix basique développé en C qui reproduit certaines fonctionnalités du shell `/bin/sh`. Ce projet implémente un shell minimal capable d'exécuter des commandes, gérer les variables d'environnement et inclure des commandes intégrées essentielles.
