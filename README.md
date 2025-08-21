@@ -1,5 +1,7 @@
 # Simple Shell
 
+![Simple Shell Architecture](./IMG/Flowchart.png)
+
 ## Description
 
 Simple Shell est un interpréteur de commandes Unix basique développé en C qui reproduit certaines fonctionnalités du shell `/bin/sh`. Ce projet implémente un shell minimal capable d'exécuter des commandes, gérer les variables d'environnement et inclure des commandes intégrées essentielles.
@@ -113,7 +115,24 @@ file1 file2
 $
 ```
 
+## Architecture et Flowchart
+
+Le projet Simple Shell suit une architecture modulaire bien structurée. Voici le diagramme de flux qui illustre le fonctionnement complet du shell :
+
+![Flowchart du Simple Shell](./IMG/Flowchart.png)
+
+Ce flowchart montre :
+- **Le flux principal d'exécution** : De la lecture de l'entrée à l'exécution des commandes
+- **La gestion des erreurs** : Comment le shell traite les différents types d'erreurs
+- **Les processus de parsing** : Comment les commandes sont analysées et préparées
+- **L'exécution des commandes** : Le cycle fork/exec/wait
+- **La gestion de la mémoire** : Allocation et libération des ressources
+
 ## Man Page
+
+Le manuel d'utilisation complet est disponible et fournit toutes les informations détaillées sur l'utilisation du shell.
+
+### Consultation du manuel
 
 Pour consulter le manuel d'utilisation :
 
@@ -126,6 +145,48 @@ ou
 ```bash
 man -l man_1_simple_shell
 ```
+
+### Aperçu du manuel
+
+Voici un aperçu du manuel de notre Simple Shell :
+
+**Partie 1 : En-tête et description**
+![Man Page - Partie 1](./IMG/Man_page_part1.png)
+
+**Partie 2 : Exemples et détails techniques**
+![Man Page - Partie 2](./IMG/Man_page_part2.png)
+
+Le manuel contient :
+- **NAME** : Description courte du programme
+- **SYNOPSIS** : Syntaxe d'utilisation
+- **DESCRIPTION** : Fonctionnalités détaillées
+- **USAGE** : Instructions de compilation et d'exécution
+- **FEATURES** : Liste des fonctionnalités supportées
+- **BUILT-IN COMMANDS** : Commandes intégrées (exit, env)
+- **EXAMPLES** : Exemples d'utilisation en mode interactif et non-interactif
+- **RETURN VALUE** : Codes de retour possibles
+- **ENVIRONMENT** : Variables d'environnement utilisées
+- **LIMITATIONS** : Fonctionnalités non supportées
+- **AUTHORS** : Informations sur les développeurs
+
+## Documentation visuelle
+
+Ce projet comprend une documentation visuelle complète :
+
+### 📊 Diagrammes techniques
+- **[Flowchart complet](./IMG/Flowchart.png)** : Architecture et flux d'exécution détaillé
+- Processus de parsing et d'exécution des commandes
+- Gestion des erreurs et codes de retour
+- Cycle de vie des processus (fork/exec/wait)
+
+### 📖 Manuel d'utilisation
+- **[Manuel partie 1](./IMG/Man_page_part1.png)** : Description et syntaxe
+- **[Manuel partie 2](./IMG/Man_page_part2.png)** : Exemples et spécifications techniques
+
+### 🎯 Navigation rapide
+- [Voir le flowchart détaillé](#architecture-et-flowchart)
+- [Consulter le manuel complet](#man-page)
+- [Tester les exemples](#examples)
 
 ## Memory Leak Check
 
